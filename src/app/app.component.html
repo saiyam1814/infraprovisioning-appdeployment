@@ -1,0 +1,25 @@
+<div class="">
+  <div>
+    <mat-toolbar color="primary">
+
+
+      <mat-toolbar-row>
+        <span > OKE Developer Assistant</span>
+        <span class="example-spacer"></span>
+      
+        <a class="example-icon" [routerLink]="['/deployment']">App Deployment</a>
+          <a class="example-icon" [routerLink]="['/docker']">Docker</a>
+        <a class="example-icon" [routerLink]="['/kubernetes']">Kubernetes</a>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="row">
+      <app-footer></app-footer>
+  </div> -->
+</div>

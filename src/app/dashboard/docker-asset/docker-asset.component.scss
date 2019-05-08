@@ -1,0 +1,22 @@
+.input-group-btn {
+    width: 83%;
+    /* padding: 2px; */
+    white-space: nowrap;
+    vertical-align: middle;
+    /* margin: 8px; */
+    padding: 0px 5px 0px 0px;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    margin: 3px;
+}
+
+#dockerDiv{
+    display: none;
+    padding: 0px;
+    div{
+        padding: 10px 0px;
+    }
+}

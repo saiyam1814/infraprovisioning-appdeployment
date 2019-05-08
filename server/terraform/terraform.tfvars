@@ -1,0 +1,6 @@
+tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaamcp5rr5pl67ssxdfybka2qutbxruxns5sh7npgkn6ocajdpg36ra"
+user_ocid="ocid1.user.oc1..aaaaaaaa2zqnbk6fwbrileyengxuv4pztdlcweciudv45kwlck7e5o2u6qfa"
+fingerprint="be:c2:b9:d0:63:47:3a:ca:c3:b9:dc:f2:8f:12:dc:19"
+compartment_id="ocid1.compartment.oc1..aaaaaaaae4v3y2gp=============================="
+private_key_path="C:/Users/thrshett/.oci/oke_asset_key.pem"
+region="us-ashburn-1"

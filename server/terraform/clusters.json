@@ -1,0 +1,77 @@
+{
+    "show-ads": {
+        "sensitive": false,
+        "type": "list",
+        "value": [
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaajwvatpaojv7y5ryg6iwul6jstx3zxbrrddttgxxz2vsyoh6citka",
+                "id": "ocid1.availabilitydomain.oc1..aaaaaaaaztunlny6ae4yw2vghp5go2zceaonwp6wiioe3tnh2vlaxjjl2n3a",
+                "name": "eaUC:US-ASHBURN-AD-1"
+            },
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaajwvatpaojv7y5ryg6iwul6jstx3zxbrrddttgxxz2vsyoh6citka",
+                "id": "ocid1.availabilitydomain.oc1..aaaaaaaatrwxaogr7dl4yschqtrmqrdv6uzis3mgbnomiagqrfhcb7mxsfdq",
+                "name": "eaUC:US-ASHBURN-AD-2"
+            },
+            {
+                "compartment_id": "ocid1.tenancy.oc1..aaaaaaaajwvatpaojv7y5ryg6iwul6jstx3zxbrrddttgxxz2vsyoh6citka",
+                "id": "ocid1.availabilitydomain.oc1..aaaaaaaauvt2n7pijol7uqgdnnsoojcukrijtmcltvfwxazmitk235wyohta",
+                "name": "eaUC:US-ASHBURN-AD-3"
+            }
+        ]
+    },
+    "show-clusters": {
+        "sensitive": false,
+        "type": "list",
+        "value": [
+            {
+                "available_kubernetes_upgrades": [],
+                "compartment_id": "ocid1.compartment.oc1..aaaaaaaaogvtfjkivrdcs44muufnl2amfadxdp2qowyr27jlhkezakif3gia",
+                "endpoints": [
+                    {
+                        "kubernetes": "c2tsnbymyyg.us-ashburn-1.clusters.oci.oraclecloud.com:6443"
+                    }
+                ],
+                "id": "ocid1.cluster.oc1.iad.aaaaaaaaafsdqnldgvsdmmjxguydgndemvrdgmdfgyzgcmtehc2tsnbymyyg",
+                "kubernetes_version": "v1.12.7",
+                "lifecycle_details": "",
+                "metadata": [
+                    {
+                        "created_by_user_id": "ocid1.saml2idp.oc1..aaaaaaaapea55l7f3tkpej3e35r4ww7xx7mjqonyfwz66cnvukqwuwlomo4q/saiyam.pathak@oracle.com",
+                        "created_by_work_request_id": "ocid1.clustersworkrequest.oc1.iad.aaaaaaaaaeytszjsg42dknbzgvrdgmrymvrtqmtemnstkzldgwygkmjvhazt",
+                        "deleted_by_user_id": "",
+                        "deleted_by_work_request_id": "",
+                        "time_created": "2019-04-17 15:55:55 +0000 UTC",
+                        "time_deleted": "",
+                        "time_updated": "",
+                        "updated_by_user_id": "",
+                        "updated_by_work_request_id": ""
+                    }
+                ],
+                "name": "cluster1",
+                "options": [
+                    {
+                        "add_ons": [
+                            {
+                                "is_kubernetes_dashboard_enabled": "1",
+                                "is_tiller_enabled": "1"
+                            }
+                        ],
+                        "kubernetes_network_config": [
+                            {
+                                "pods_cidr": "10.244.0.0/16",
+                                "services_cidr": "10.96.0.0/16"
+                            }
+                        ],
+                        "service_lb_subnet_ids": [
+                            "ocid1.subnet.oc1.iad.aaaaaaaapx2aa53abvxc2qa7jgepick4vp2rvbrn5ygih56uvx6zli7jwbca",
+                            "ocid1.subnet.oc1.iad.aaaaaaaa7zyydlstqmygbnjcouumesskaadyo42mwanjc4nwgwe6got3r4xq"
+                        ]
+                    }
+                ],
+                "state": "ACTIVE",
+                "vcn_id": "ocid1.vcn.oc1.iad.aaaaaaaanqk2p6poyookntp6npdvrhmz7njmcvtqiikin3fnrxz5uz3mfpqq"
+            }
+        ]
+    }
+}

@@ -1,0 +1,148 @@
+.mathstepper{
+    margin: 10px;
+    ::ng-deep .mat-horizontal-content-container {
+        margin-left: 36px;
+        border: 0;
+        position: relative;
+        border: 1px solid #b0b3f7;
+        width: 90%;
+        box-sizing: content-box;
+        margin-top: 20px;
+    }
+
+}
+.mat-button ,.mat-raised-button {
+    color: white;
+    background: #3f51b5;
+    margin: 10px;
+}
+
+
+.example-container-1 {
+    display: flex;
+    flex-direction: row;
+    .ec1{
+        width: 30%;
+        padding: 20px;
+        text-align: start;
+    }
+    .ec2{
+        width: 70%;
+       
+        
+    }
+    .mat-form-field {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        width: 100%;
+    }
+    button{
+        float: right;
+    }
+    mat-error{
+        float: left;
+    }
+  }
+.example-container-1 > * {
+    width: 100%;
+  }
+  
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+  .input-group-btn {
+    width: 83%;
+    /* padding: 2px; */
+    white-space: nowrap;
+    vertical-align: middle;
+    /* margin: 8px; */
+    padding: 0px 5px 0px 0px;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    margin: 3px;
+}
+
+#dockerDiv{
+    display: none;
+    padding: 0px;
+    div{
+        padding: 10px 0px;
+    }
+}
+
+.formC{
+    padding: 20px;
+}
+
+
+#yamldiv{
+    display: block;
+    padding: 0px;
+    div{
+        padding: 10px 0px;
+    }
+}
+.borderD{
+    width: 80%;
+    margin: 0 auto;
+}
+.borderH{
+    margin: 10px;
+}
+
+
+
+.example-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .ec1{
+        width: 30%;
+        padding: 20px;
+        text-align: start;
+    }
+    .ec2{
+        width: 70%;
+        display: flex;
+        span{
+            color: blue;
+        }
+        .fileupload{
+            margin: 20px 0px;
+        }
+      
+    }
+    .ec3{
+        width: 30%;  
+        padding-top: 1.25em;
+        text-align: end;
+    }
+    .mat-form-field {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        width: 100%;
+    }
+    button{
+        float: right;
+    }
+    mat-error{
+        float: left;
+    }
+  }
+  
+.example-container > * {
+    width: 100%;
+  }

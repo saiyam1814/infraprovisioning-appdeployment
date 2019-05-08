@@ -1,0 +1,145 @@
+
+
+<div id="dockerapp">
+    <div class="mainform">
+        <div class="borderD">
+            <h3 style="color: white;
+                font-weight: 700;
+                margin-bottom: 20px;">DockerFile</h3>
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="txtfrom" class="col-md-2 control-label">FROM </label>
+                    <div class="col-md-8">
+                     
+                            <input matInput type="text" class="form-control" id="txtfrom" placeholder="Docker Image Name"
+                           [(ngModel)]="from"  name="txtfrom" data-toggle="tooltip" data-placement="right" 
+                           title="image name from dockerhub or OCIR repository eg. saiyam911/helidonsentiment or iad.ocir.io/identityname/demo:1.0" />
+                 
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="txtUser" class="col-md-2 control-label">USER </label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtUser" name="txtUser" placeholder="User, if any"
+                        [(ngModel)]="user" data-toggle="tooltip" data-placement="right" title="User with which you want to execute remaining commands keep root if not sure" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="numberexpose" class="col-md-2 control-label">EXPOSE</label>
+
+                    <div class="col-md-8">
+                        <input type="number" class="form-control" id="numberexpose" name="numberexpose" placeholder="PORT Number"
+                        [(ngModel)]="expose" data-toggle="tooltip" data-placement="right" title="on which port the application will run " />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtworkdir" class="col-md-2 control-label">WORKDIR</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtworkdir" name="txtworkdir" placeholder="workdir"
+                        [(ngModel)]="workdir" data-toggle="tooltip" data-placement="right" title="the working directory within the container" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span>
+                        <label for="txtCopyfrom" class="col-md-2 control-label">COPY FROM</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="txtCopyfrom" name="txtCopyfrom" v-model="copyfrom"
+                                data-toggle="tooltip" data-placement="right" title="directory from which data has to be copied to the container, give '.' if not sure " />
+                        </div>
+                    </span>
+                    <label for="txtCopyto" class="col-md-2 control-label">COPY TO</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="txtCopyto" name="txtCopyto"  [(ngModel)]="copyto"
+                            data-toggle="tooltip" data-placement="right" title="directory inside the container where the data has to be copiedn keep /app if not sure" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtrun" class="col-md-2 control-label">RUN</label>
+                    <div class="col-md-8">
+                        <!-- <input type="text" class="form-control" id="txtrun" name="txtrun" v-bind:placeholder="Run "
+                    v-model="run" /> -->
+
+                        <div class="input-group">
+
+                            <span class="input-group-btn inputgrpbtnend">
+                                <input type="text" class="form-control" id="txtrun" name="txtrun" placeholder="runcmd"
+                                [(ngModel)]="runcmd" data-toggle="tooltip" data-placement="right" title="the Shell commands to be run within the container.">
+
+                            </span>
+
+
+                            <button class="btn btn-default addbutton" (click)="addruncmds(runcmd)" type="button">ADD</button>
+                            <button class="btn btn-default addbutton" (click)="clear('runcmd')" type="button">CLEAR</button>
+
+                        </div>
+                        cmds : {{finalcmd}}
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="txtcmd" class="col-md-2 control-label">CMD</label>
+                    <div class="col-md-8">
+                        <!-- <input type="text" class="form-control" id="txtrun" name="txtrun" v-bind:placeholder="Run "
+                        v-model="run" /> -->
+
+                        <div class="input-group">
+
+                            <span class="input-group-btn inputgrpbtnend">
+                                <input type="text" class="form-control" id="txtcmd" name="txtcmd" v-bind:placeholder="cmd"
+                                [(ngModel)]="cmd" data-toggle="tooltip" data-placement="right" title="Command to be execute eg node server.js">
+
+                            </span>
+
+
+                            <button class="btn btn-default addbutton" (click)="addcmds(cmd)" type="button">ADD</button>
+                            <button class="btn btn-default addbutton" (click)="clear('cmd')" type="button">CLEAR</button>
+
+                        </div>
+                        cmds : {{finalcmdCMD}}
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <div class="col-md-2"></div>
+
+                <button mat-raised-button color="primary" (click)="generateDocker()">
+                    <mat-icon>cloud_download</mat-icon>
+                    Generate Docker
+                </button>
+
+                <a href="javascript:history.back()">Go Back</a>
+
+
+
+            </div>
+            <div id="dockerDiv">
+                <label class="col-md-2"></label>
+                <div class="col-md-4">
+                    <pre>
+                            {{dockerObj}}
+                                           </pre>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button mat-raised-button color="primary" (click)="downloadyaml(dockerfile)">
+                        <mat-icon>cloud_download</mat-icon>
+                        Download Yaml
+                    </button>
+                </div>
+
+            </div>
+
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,237 @@
+<div id="app">
+
+    <div class="mainform">
+
+        <div class="borderD">
+            <h3 style="color: white;
+                font-weight: 700;
+                margin-bottom: 20px;">Kubernetes
+                Yaml file</h3>
+
+            <div class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="txtDockerImageName" class="col-md-2 control-label">Docker Image Name:</label>
+                    <div class="col-md-8 inputContainer">
+                        <span> <input type="text" class="form-control" id="txtDockerImageName" name="txtDockerImageName"
+                                v-model="DockerImageName" data-toggle="tooltip" data-placement="right" title="image name from dockerhub or OCIR repository eg. saiyam911/helidonsentiment or iad.ocir.io/identityname/demo:1.0" />
+                        </span>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="txtContainerCommand" class="col-md-2 control-label">Container Command:</label>
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtContainerCommand" name="txtContainerCommand"
+                            placeholder="Docker command for container, if any" v-model="ContainerCommand" data-toggle="tooltip"
+                            data-placement="right" title="Command needed to run for the container." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtContainerArgs" class="col-md-2 control-label">Container Args:</label>
+
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtContainerArgs" name="txtContainerArgs"
+                            placeholder="Docker args for container, if any" v-model="ContainerArgs" data-toggle="tooltip"
+                            data-placement="right" title="specific arguments for the container." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtDeploymentNameOverride" class="col-md-2 control-label">Deployment Name:</label>
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtDeploymentNameOverride" name="txtDeploymentNameOverride"
+                            v-bind:placeholder="DeploymentName" v-model="DeploymentNameOverride" data-toggle="tooltip"
+                            data-placement="right" title="Name of the deployment" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtContainerNameoverride" class="col-md-2 control-label">Container Name:</label>
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtContainerNameoverride" name="txtContainerNameoverride"
+                            v-bind:placeholder="ContainerName" v-model="ContainerNameOverride" data-toggle="tooltip"
+                            data-placement="right" title="Name of the Container" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtAppLabelOverride" class="col-md-2 control-label">App Label:</label>
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtAppLabelOverride" name="txtAppLabelOverride"
+                            v-bind:placeholder="AppLabel" v-model="AppLabelOverride" data-toggle="tooltip"
+                            data-placement="right" title="Application Label " />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtReplicas" class="col-md-2 control-label">Replicas:</label>
+                    <div class="col-md-8 inputContainer">
+                        <input type="text" class="form-control" id="txtReplicas" name="txtReplicas" v-model="Replicas"
+                            data-toggle="tooltip" data-placement="right" title="Number of replicas to run." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Ports:</label>
+                    <div class="col-md-8 inputContainer">
+                        <div class="panel panel-default">
+                            <!-- <div class="panel-heading">
+                    <h4>Ports</h4>
+                </div> -->
+                            <div class="panel-body">
+                                <div>For Container ports and the port for the service that you want to expose to
+                                    outside world</div>
+                                <button class="btn btn-primary" v-on:click="addPort"><span class="glyphicon glyphicon-plus"></span>
+                                    Add Port</button>
+
+                                <div>&nbsp;</div>
+                                <div v-for="port in Ports">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 col-md-6">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" style=" padding:0 15px;"><button
+                                                                v-on:click="deletePort(port)"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            Container Port</span>
+                                                        <input type="text" class="form-control" v-model="port.ContainerPort" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6" style="margin-top: 5px;">
+                                                    <input type="checkbox" v-model="port.ExposeViaService" />
+                                                    Expose
+                                                    Service Port
+                                                </div>
+                                                <div class="clearfix">&nbsp;</div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-show="port.ExposeViaService">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            Exposed Port Number
+                                                        </span>
+                                                        <input type="text" class="form-control" v-model="port.ServicePort"
+                                                            placeholder="port #" style="min-width: 50px;" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6" v-show="port.ExposeViaService">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">Port Name</span>
+                                                        <input type="text" class="form-control" v-model="port.ServicePortName"
+                                                            placeholder="Port Name (optional)" />
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6" style=" margin-top:10px;"
+                                                    v-show="port.ExposeViaService">
+                                                    <div>
+                                                        <label for="selProtocol">Protocol</label>
+                                                        <select class="form-control" name="selProtocol" ID="selProtocol"
+                                                            v-model="port.ServicePortProtocol" style="min-width: 100px;">
+                                                            <option value="TCP">TCP</option>
+                                                            <option value="UDP">UDP</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group" v-if="HasOneOrMoreServicePorts">
+                    <label class="col-md-2 control-label">Service Information:</label>
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="txtReplicas" class="col-md-3 control-label">Service Name:</label>
+                                    <div class="col-md-6">
+                                        <input type="txtServiceNameOverride" class="form-control" id="txtServiceNameOverride"
+                                            name="txtServiceNameOverride" v-model="ServiceNameOverride"
+                                            v-bind:placeholder="ServiceName" data-toggle="tooltip" data-placement="right"
+                                            title="Name of the Service" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selServiceType" class="col-md-3 control-label">Service Type:</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="selServiceType" ID="selServiceType" v-model="ServiceType"
+                                            style="min-width: 100px;">
+                                            <option value="ClusterIP">Cluster IP</option>
+                                            <option value="NodePort">NodePort</option>
+                                            <option value="LoadBalancer">LoadBalancer</option>
+                                        </select>
+                                    </div>
+                                    <div style="display:inline-block">
+                                        <div v-if="ServiceType === 'ClusterIP'" class="alert alert-primary">
+                                            <strong>ClusterIP</strong> To expose sevice internally within the
+                                            cluster.exposes the service on a
+                                            It makes the service accessible from within the cluster only.
+                                        </div>
+                                        <div v-if="ServiceType === 'NodePort'" class="alert alert-primary">
+                                            <strong>NodePort</strong> This Exposes the service on each Node's IP with a
+                                            random portand the port used
+                                            to access the service will be generated in the range of 30000's eg 34212
+
+                                        </div>
+                                        <div v-if="ServiceType === 'LoadBalancer'" class="alert alert-primary">
+                                            <span class="label label-warning">Cloud Provider Only</span>
+                                            <strong>LoadBalancer</strong>
+                                            This exposes the service
+                                            externally using a cloud provider's load balancer and provide with an
+                                            External IP
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div>
+                <div class="col-md-2"></div>
+                <button mat-raised-button color="primary" (click)="generateYaml">
+                    <mat-icon>cloud_download</mat-icon>
+                    Generate Yaml
+                </button>
+
+
+
+
+
+            </div>
+
+            <div id="yamldiv" class="col-md-12">
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <h4>Generated YAML</h4>
+                        <pre>
+            {{DeploymentYaml}}
+            <template v-if="HasOneOrMoreServicePorts">---
+            {{ServiceYaml}}
+            </template>
+            </pre>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <button mat-raised-button color="primary" (click)="downloadyaml(DeploymentYaml)">
+                    <mat-icon>cloud_download</mat-icon>
+                    Download Yaml
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
